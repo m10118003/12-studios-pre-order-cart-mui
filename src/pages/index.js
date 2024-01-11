@@ -1,11 +1,33 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import React, { useState } from "react";
+import Head from "next/head";
+import Navbar from '@/components/Navbar';
+import Image from "next/image";
+import { Roboto_Condensed } from "next/font/google";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
+import styles from "@/styles/App.module.scss";
 
-const inter = Inter({ subsets: ['latin'] })
+const robotoFont = Roboto_Condensed({ subsets: ["latin"] });
 
 export default function Home() {
+  const [countString, setCount] = useState("");
+  const [count, setCount2] = useState("");
+
+  const clickBtn = () => {
+    setCount("Yes! Yes! Yes!");
+    console.log("Button clicked", countString);
+  };
+
+  const clickBtn2 = () => {
+    const newCount = `Go ! Go ! Go !`;
+    setCount2(newCount);
+    console.log("Button clicked", newCount);
+  };
+
   return (
     <>
       <Head>
@@ -14,101 +36,69 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+      <Box>
+        <Navbar />
+        <Container sx={{fontFamily: robotoFont}}>
+          <Box sx={{ p: 5, textAlign: "center" }}>
+            <Typography
+              variant="h4"
+              gutterBottom
+              component="h1"
+              sx={{
+                fontSize: "3.2em",
+                fontWeight: "600",
+                cursor: "pointer",
+                textDecoration: "underline", ":hover": { bgcolor: "skyblue", color: "indigo", borderRadius: "0.25rem" },
+              }}
             >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+              React + MUI
+            </Typography>
+            <Grid container justifyContent="center" spacing={2}>
+              <Grid item>
+                <Link
+                  href="https://nextjs.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    className={styles.logo}
+                    src="/next.svg"
+                    alt="Next.js Logo"
+                    width={180}
+                    height={50}
+                    priority
+                  />
+                </Link>
+              </Grid>
+            </Grid>
+            <Box sx={{ my: 2 }}>
+              <Button variant="outlined" onClick={clickBtn} sx={{ fontSize: '1.5rem', border: "1px solid transparent", m: 1, ":hover": { bgcolor: "#feb28e", color: "indigo", borderRadius: "0.25rem" } }}>
+                Start? {countString}
+              </Button>
+              <Button variant="outlined" onClick={clickBtn2} sx={{ fontSize: '1.5rem', border: "1px solid transparent", m: 1, ":hover": { bgcolor: "skyblue", color: "indigo", borderRadius: "0.25rem" } }}>
+                Keep going? {count}
+              </Button>
+            </Box>
+            <Typography variant="body1" sx={{ my: 2, textAlign: "center" }}>
+              Click on the NEXT.JS logos to learn more
+            </Typography>
+            <Typography
+              variant="h4"
+              gutterBottom
+              component="h1"
+              sx={{
+                fontSize: "3.2em",
+                fontWeight: "600",
+                cursor: "pointer",
+                textDecoration: "underline",
+                ":hover": { bgcolor: "skyblue", color: "indigo", borderRadius: "0.25rem" },
+              }}
+            >
+              Hello world!
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
     </>
-  )
+  );
 }
