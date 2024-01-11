@@ -26,7 +26,6 @@ export default function Navbar({ children }) {
             <Link key={link.id} href={link.href} passHref>
               <Button
                 sx={{
-                  margin: "0.5rem",
                   cursor: "crosshair",
                   borderRadius: "0.25rem",
                   padding: "1rem",
@@ -37,6 +36,7 @@ export default function Navbar({ children }) {
                     backgroundColor: "skyblue",
                     color: "rgb(55 48 163)",
                     transform: "scale(1.1)",
+                    margin: "0.5rem"
                   },
                 }}
                 color="inherit"

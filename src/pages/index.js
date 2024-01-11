@@ -80,7 +80,7 @@ export default function Home() {
               </Button>
             </Box>
             <Typography variant="body1" sx={{ my: 2, textAlign: "center" }}>
-              Click on the NEXT.JS logos to learn more
+              Click on the NEXT.JS logo to learn more
             </Typography>
             <Typography
               variant="h4"
